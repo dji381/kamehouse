@@ -6,9 +6,10 @@ import { Sand } from './Sand'
 import { Water } from './Water'
 import { Grass } from './Grass'
 import { Kamehouse } from './Kamehouse'
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
 import { CocoNutPalm } from './CocoNutPalm'
 import { Palm } from './Palm'
+import { Kamesenin } from './KameSenin'
+import { Cloud } from './Cloud'
 /**
  * Base
  */
@@ -54,8 +55,29 @@ palm.loadModel().then((palm)=>{
     palm.children[0].children[0].children[0].children[0].children.forEach(element => {
         element.castShadow = true;
     });
-    console.log(palm);
     scene.add(palm);
+})
+
+//Kamesenin
+const kamesenin = new Kamesenin();
+kamesenin.loadModel().then((kamesenin)=>{
+    kamesenin.scale.setScalar(0.125);
+    kamesenin.position.z = 5;
+    kamesenin.position.y = 1
+    scene.add(kamesenin);
+})
+//Magic Cloud
+const magicClouds = new Cloud();
+magicClouds.loadModel().then((magicCloud)=>{
+    console.log(magicCloud);
+    magicCloud.scale.setScalar(0.5);
+    magicCloud.position.y = 6
+    magicCloud.position.x = 7
+    magicClouds.model = magicCloud
+    magicCloud.children[0].children[0].children[0].children[0].children.forEach(element => {
+        element.rotation.z = Math.PI * 0.5;
+    });
+    scene.add(magicCloud);
 })
 //Water
 const {water} = new Water();
@@ -157,7 +179,7 @@ grass.receiveShadow = true;
 function render(time) {
     controls.update();
     renderer.render(scene, camera);
-   
+    magicClouds.model.position.x += time *0.001
     requestAnimationFrame(render);
   }
   requestAnimationFrame(render);

@@ -1,0 +1,11 @@
+Model Information:
+* title:	KameSenin（scanned by Revopoint POP）
+* source:	https://sketchfab.com/3d-models/kameseninscanned-by-revopoint-pop-b23ebc1f48d644f5b3c2539c56f49ee8
+* author:	Revopoint3d (https://sketchfab.com/Revopoint3d)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "KameSenin（scanned by Revopoint POP）" (https://sketchfab.com/3d-models/kameseninscanned-by-revopoint-pop-b23ebc1f48d644f5b3c2539c56f49ee8) by Revopoint3d (https://sketchfab.com/Revopoint3d) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
