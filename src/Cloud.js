@@ -2,6 +2,7 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
 export class Cloud{
     constructor(){
         this.gltfLoader = new GLTFLoader();
+        this.model = null;
     }
     
     loadModel(){

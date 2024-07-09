@@ -67,16 +67,21 @@ kamesenin.loadModel().then((kamesenin)=>{
     scene.add(kamesenin);
 })
 //Magic Cloud
+const magicLight = new THREE.PointLight(0xff0000,15)
 const magicClouds = new Cloud();
 magicClouds.loadModel().then((magicCloud)=>{
-    console.log(magicCloud);
     magicCloud.scale.setScalar(0.5);
-    magicCloud.position.y = 6
-    magicCloud.position.x = 7
+    magicCloud.position.x = -10
+    magicCloud.position.y = 8
+    magicCloud.add(magicLight)
+    magicCloud.traverse((node)=>{
+        if(node.isMesh){
+            node.material.emissive.r = 200
+        }
+    })
+    magicLight.position.set(7,0,0)
+    console.log(magicCloud)
     magicClouds.model = magicCloud
-    magicCloud.children[0].children[0].children[0].children[0].children.forEach(element => {
-        element.rotation.z = Math.PI * 0.5;
-    });
     scene.add(magicCloud);
 })
 //Water
@@ -179,7 +184,10 @@ grass.receiveShadow = true;
 function render(time) {
     controls.update();
     renderer.render(scene, camera);
-    magicClouds.model.position.x += time *0.001
+    if(magicClouds.model){
+        magicClouds.model.position.x += Math.cos(time*0.001) *0.07
+        magicClouds.model.position.y += Math.sin(time*0.01) * 0.08
+    }
     requestAnimationFrame(render);
   }
   requestAnimationFrame(render);
