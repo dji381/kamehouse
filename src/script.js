@@ -15,6 +15,7 @@ import { Cloud } from './Cloud'
  */
 // Debug
 const gui = new GUI()
+// gui.hide();
 
 // Canvas
 const canvas = document.querySelector('canvas.webgl')
@@ -71,7 +72,7 @@ const magicLight = new THREE.PointLight(0xff0000,15)
 const magicClouds = new Cloud();
 magicClouds.loadModel().then((magicCloud)=>{
     magicCloud.scale.setScalar(0.5);
-    magicCloud.position.x = -10
+    magicCloud.position.x = -3
     magicCloud.position.y = 8
     magicCloud.add(magicLight)
     magicCloud.traverse((node)=>{
@@ -80,7 +81,6 @@ magicClouds.loadModel().then((magicCloud)=>{
         }
     })
     magicLight.position.set(7,0,0)
-    console.log(magicCloud)
     magicClouds.model = magicCloud
     scene.add(magicCloud);
 })
@@ -181,11 +181,13 @@ grass.receiveShadow = true;
 /**
  * Animate
  */
+const clock = new THREE.Clock();
 function render(time) {
+    const elapsedTime = clock.getElapsedTime();
     controls.update();
     renderer.render(scene, camera);
     if(magicClouds.model){
-        magicClouds.model.position.x += Math.cos(time*0.001) *0.07
+        magicClouds.model.position.x = (Math.sin(elapsedTime)) *3 - 3
         magicClouds.model.position.y += Math.sin(time*0.01) * 0.08
     }
     requestAnimationFrame(render);
